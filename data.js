@@ -199,15 +199,16 @@ const PROJECTS = [
         title: "Voir les écrans de jeux",
         heading: "Écrans de jeux",
         image: "images/carte-noire/tuile-ecrans.jpg",
-        phones: [
-          { src: "images/carte-noire/ecrans/01-accueil.jpg", caption: "Accueil du jeu" },
-          { src: "images/carte-noire/ecrans/02-surprise.jpg", caption: "Choix de la boisson" },
-          { src: "images/carte-noire/ecrans/03-gagne-machine.jpg", caption: "Gagné : la machine" },
-          { src: "images/carte-noire/ecrans/04-gagne-code.jpg", caption: "Gagné : le code privilège" },
-          { src: "images/carte-noire/ecrans/05-consentements.jpg", caption: "Consentements" },
-          { src: "images/carte-noire/ecrans/06-deja-participe.jpg", caption: "Déjà participé" },
-          { src: "images/carte-noire/ecrans/07-connexion.jpg", caption: "Connexion à l’application" },
-          { src: "images/carte-noire/ecrans/08-merci.jpg", caption: "Remerciement" }
+        rowSizes: [4, 4],
+        images: [
+          { src: "images/carte-noire/ecrans/01-accueil.jpg", ratio: 0.519, caption: "Accueil du jeu" },
+          { src: "images/carte-noire/ecrans/02-surprise.jpg", ratio: 0.519, caption: "Choix de la boisson" },
+          { src: "images/carte-noire/ecrans/03-gagne-machine.jpg", ratio: 0.519, caption: "Gagné : la machine" },
+          { src: "images/carte-noire/ecrans/04-gagne-code.jpg", ratio: 0.519, caption: "Gagné : le code privilège" },
+          { src: "images/carte-noire/ecrans/05-consentements.jpg", ratio: 0.519, caption: "Consentements" },
+          { src: "images/carte-noire/ecrans/06-deja-participe.jpg", ratio: 0.519, caption: "Déjà participé" },
+          { src: "images/carte-noire/ecrans/07-connexion.jpg", ratio: 0.519, caption: "Connexion à l’application" },
+          { src: "images/carte-noire/ecrans/08-merci.jpg", ratio: 0.519, caption: "Remerciement" }
         ]
       },
       {
