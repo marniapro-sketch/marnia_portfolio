@@ -321,4 +321,28 @@ const PROJECTS = [
       }
     ]
   },
+  {
+    id: "generation-images",
+    title: "Génération d’images",
+    year: "2025",                          // non affiché sur le site
+    role: "Direction artistique",
+    tags: ["Intelligence artificielle", "Visuels"],
+    cover: "images/generation-images/cover.jpg",
+    hero: "",
+    rowSizes: [2, 2, 4],
+    summary: "Montages et visuels de produits créés avec l’intelligence artificielle.",
+    description: [
+      "Une sélection de visuels produits que j’ai créés avec des outils d’intelligence artificielle : lunettes de soleil, escarpins et chaussures de tennis, mis en scène dans des décors réalistes."
+    ],
+    images: [
+      { src: "images/generation-images/lunettes-plage.jpg", ratio: 1.753, caption: "Lunettes de soleil, plage" },
+      { src: "images/generation-images/lunettes-falaise.jpg", ratio: 1.75, caption: "Lunettes de soleil, falaise" },
+      { src: "images/generation-images/escarpins-noirs.jpg", ratio: 1, caption: "Escarpins noirs" },
+      { src: "images/generation-images/escarpins-orange.jpg", ratio: 1, caption: "Escarpins camel" },
+      { src: "images/generation-images/tennis-terre-1.jpg", ratio: 1, caption: "Chaussures de tennis, terre battue" },
+      { src: "images/generation-images/tennis-terre-2.jpg", ratio: 1, caption: "Chaussures de tennis, terre battue" },
+      { src: "images/generation-images/tennis-bleu-1.jpg", ratio: 1, caption: "Chaussures de tennis, court bleu" },
+      { src: "images/generation-images/tennis-bleu-2.jpg", ratio: 1, caption: "Chaussures de tennis, court bleu" }
+    ]
+  },
 ];
