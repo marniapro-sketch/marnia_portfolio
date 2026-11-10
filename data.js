@@ -257,7 +257,7 @@ const PROJECTS = [
         title: "Voir la landing page",
         heading: "Landing page",
         image: "images/armani/tuile-lp.jpg",
-        shots: { desk: "images/armani/lp-desk.jpg", mob: "images/armani/lp-mob.jpg" }
+        shots: { desk: "images/armani/lp-desk.jpg", mob: "images/armani/lp-mob.jpg?v=2" }
       }
     ]
   },
