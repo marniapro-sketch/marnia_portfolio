@@ -265,7 +265,7 @@ const PROJECTS = [
     year: "2025",                          // non affiché sur le site
     role: "Design digital",
     tags: ["Landing page", "Vidéo"],
-    cover: "images/fdj-eurodreams/cover.jpg",   // image de la grille d’accueil
+    cover: "images/fdj-eurodreams/cover.jpg?v=2",   // image de la grille d’accueil
     hero: "",
     summary: "Landing page et vidéo du tirage exceptionnel EuroDreams, créées chez Showroomprivé.",
     description: [
