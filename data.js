@@ -231,6 +231,36 @@ const PROJECTS = [
     link: ""
   },
   {
+    id: "armani-beauty",
+    title: "Armani Beauty",
+    year: "2025",                          // non affiché sur le site
+    role: "Design digital",
+    tags: ["Landing page", "Vidéo"],
+    cover: "images/armani/cover.jpg",      // image de la grille d’accueil
+    hero: "",
+    summary: "Landing page et vidéo de l’offre exclusive Armani Beauty, créées chez Showroomprivé.",
+    description: [
+      "Offre exclusive Armani Beauty, réalisée pendant mon alternance chez Showroomprivé : jusqu’à -30 % et trois cadeaux offerts dès 60 € d’achats avec le code SHOWROOM. J’ai conçu la landing page en deux versions, ordinateur et mobile, avec un carrousel de catégories pour les éditions limitées, puis une vidéo animée pour présenter l’offre."
+    ],
+    images: [],
+    sections: [
+      {
+        id: "video",
+        title: "Voir la vidéo",
+        heading: "Vidéo",
+        image: "images/armani/tuile-video.jpg",
+        video: { src: "images/armani/video.mp4", poster: "images/armani/poster.jpg" }
+      },
+      {
+        id: "lp",
+        title: "Voir la landing page",
+        heading: "Landing page",
+        image: "images/armani/tuile-lp.jpg",
+        shots: { desk: "images/armani/lp-desk.jpg", mob: "images/armani/lp-mob.jpg" }
+      }
+    ]
+  },
+  {
     id: "visuels-ia-promotionnels",
     title: "Visuels promotionnels et kits de communication",
     year: "2025–2026",

@@ -197,3 +197,18 @@ nav a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}
 .proto-tools button{font:inherit;font-size:.9rem;padding:9px 16px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
 .proto-tools button:hover{border-color:var(--accent);color:var(--accent)}
 @media (max-width:640px){.proto{aspect-ratio:auto;height:min(78vh,560px)}}
+
+/* Vidéo et landing page en images (switch ordinateur / mobile) */
+.vidbox{width:min(1100px,100%);margin:28px auto 40px;background:#0b0f12}
+.vidbox video{display:block;width:100%;height:auto;max-height:78vh;margin:0 auto}
+.switch{display:flex;justify-content:center;gap:var(--gap);margin:24px 0 0}
+.switch button{font:inherit;font-size:.95rem;padding:10px 22px;border:1px solid var(--line);background:var(--bg);color:var(--mute);cursor:pointer;border-radius:0}
+.switch button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.switch button:not(.on):hover{color:var(--ink);border-color:var(--ink)}
+.monitor-screen .scroller{aspect-ratio:16/11;overflow-y:auto;background:#000}
+.scroller img{display:block;width:100%;height:auto}
+.devview[hidden]{display:none}
+.phonedev{width:min(400px,100%);margin:28px auto 40px;background:#121214;padding:12px;border-radius:38px;box-shadow:0 18px 44px rgba(0,0,0,.22)}
+.phonedev-screen{border-radius:28px;overflow:hidden}
+.phonedev .scroller{height:min(760px,78vh);overflow-y:auto;background:#000}
+@media (max-width:640px){.monitor-screen .scroller{aspect-ratio:4/5}.phonedev{padding:8px;border-radius:30px}}

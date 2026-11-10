@@ -115,11 +115,20 @@ if (page === "project") {
         ${sec.text ? `<p class="lead">${esc(sec.text)}</p>` : ""}
         ${sec.page ? `<div class="monitor"><div class="monitor-screen"><iframe src="${esc(sec.page)}?v=25" title="Landing page ${esc(p.title)}" loading="lazy"></iframe></div></div>
         <p class="phone-hint">Faites défiler la page et utilisez les flèches, comme sur le vrai site.</p>` : ""}
+        ${sec.video ? `<div class="vidbox"><video src="${esc(sec.video.src)}" poster="${esc(sec.video.poster || "")}" controls playsinline preload="metadata"></video></div>` : ""}
+        ${sec.shots ? `<div class="switch" role="group" aria-label="Version de la page"><button type="button" class="on" data-m="desk">Ordinateur</button><button type="button" data-m="mob">Mobile</button></div>
+        <div class="monitor devview" data-m="desk"><div class="monitor-screen"><div class="scroller"><img src="${esc(sec.shots.desk)}" alt="Landing page version ordinateur"></div></div></div>
+        <div class="phonedev devview" data-m="mob" hidden><div class="phonedev-screen"><div class="scroller"><img src="${esc(sec.shots.mob)}" alt="Landing page version mobile"></div></div></div>
+        <p class="phone-hint">Faites défiler la page dans l’écran.</p>` : ""}
         ${sec.figma && !sec.frame ? `<div class="figma"><iframe src="${esc(figmaEmbed(sec.figma))}" title="Prototype Figma : ${esc(p.title)}" allowfullscreen></iframe></div>` : ""}
         ${phones.length ? `<div class="phones">${phones.map((s, k) => `<figure class="phone"><button class="zoom" type="button" data-i="${k}" aria-label="Agrandir l’écran"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></button></figure>`).join("")}</div>` : ""}
         ${journey.length ? `<div class="journey"><button class="j-nav j-prev" type="button" aria-label="Précédent">‹</button><button class="j-nav j-next" type="button" aria-label="Suivant">›</button><ol class="track">${journey.map((s, k) => `${s.sep === "|" ? "" : ""}<li class="step"><button class="zoom" type="button" data-i="${k}" aria-label="Agrandir l’écran"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></button><p class="cap"><b>${String(k + 1).padStart(2, "0")}</b> ${esc(s.caption || "")}</p></li>${s.sep && s.sep !== "|" ? `<li class="sep" aria-hidden="true">${esc(s.sep)}</li>` : ""}${s.sep === "|" ? `<li class="sep-line" aria-hidden="true"><span>Cas particuliers</span></li>` : ""}`).join("")}</ol></div>` : ""}
         ${shots.length ? `<div class="gallery">${rows(shots, phones.length, sec.rowSizes)}</div>` : ""}
         <p class="back-bottom"><a class="back" href="project.html?id=${encodeURIComponent(p.id)}">Retour à ${esc(p.title)}</a></p>`;
+      el.querySelectorAll(".switch button").forEach(b => b.addEventListener("click", () => {
+        el.querySelectorAll(".switch button").forEach(x => x.classList.toggle("on", x === b));
+        el.querySelectorAll(".devview").forEach(v => { v.hidden = v.dataset.m !== b.dataset.m; const sc = v.querySelector(".scroller"); if (sc) sc.scrollTop = 0; });
+      }));
       if (zoomList.length) {
         const open = lightbox(zoomList);
         el.querySelectorAll(".zoom").forEach(b => b.addEventListener("click", () => open(+b.dataset.i, b)));
