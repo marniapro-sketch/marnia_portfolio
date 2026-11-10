@@ -113,7 +113,7 @@ if (page === "project") {
         <a class="back" href="project.html?id=${encodeURIComponent(p.id)}">${esc(p.title)}</a>
         <h1>${esc(sec.heading || sec.title)}</h1>
         ${sec.text ? `<p class="lead">${esc(sec.text)}</p>` : ""}
-        ${sec.page ? `<div class="monitor"><div class="monitor-screen"><iframe src="${esc(sec.page)}" title="Landing page ${esc(p.title)}" loading="lazy"></iframe></div></div>
+        ${sec.page ? `<div class="monitor"><div class="monitor-screen"><iframe src="${esc(sec.page)}?v=25" title="Landing page ${esc(p.title)}" loading="lazy"></iframe></div></div>
         <p class="phone-hint">Faites défiler la page et utilisez les flèches, comme sur le vrai site.</p>` : ""}
         ${sec.figma && !sec.frame ? `<div class="figma"><iframe src="${esc(figmaEmbed(sec.figma))}" title="Prototype Figma : ${esc(p.title)}" allowfullscreen></iframe></div>` : ""}
         ${phones.length ? `<div class="phones">${phones.map((s, k) => `<figure class="phone"><button class="zoom" type="button" data-i="${k}" aria-label="Agrandir l’écran"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></button></figure>`).join("")}</div>` : ""}
