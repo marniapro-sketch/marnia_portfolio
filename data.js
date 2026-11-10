@@ -107,6 +107,31 @@ const PROJECTS = [
     link: ""
   },
   {
+    id: "starship-redesign",
+    title: "Starship Redesign",
+    year: "",                              // non affiché sur le site
+    role: "Design UX/UI",
+    tags: ["Web design", "Adobe XD"],
+    cover: "images/starship-redesign/cover.jpg",   // image de la grille d’accueil
+    hero: "",                              // pas de grande bannière
+    rowSizes: [4, 3],                      // 4 images sur la 1re ligne, puis 3
+    summary: "Refonte du site d’un label de musique, pensée pour un fan étranger non coréen.",
+    description: [
+      "Travail sur Adobe XD et refonte d’un site d’un label de musique, ici le but était de rendre le site plus clair pour la cible choisie (ici un fan étranger non coréen.) Le site a été traduit en anglais et rendu plus moderne pour la nouvelle génération de fans."
+    ],
+    images: [
+      { src: "images/starship-redesign/accueil.jpg", ratio: 0.568, caption: "Page d’accueil" },
+      { src: "images/starship-redesign/a-propos.jpg", ratio: 0.398, caption: "À propos et historique" },
+      { src: "images/starship-redesign/guide.jpg", ratio: 0.604, caption: "Guide d’audition" },
+      { src: "images/starship-redesign/candidature.jpg", ratio: 0.585, caption: "Formulaire de candidature" },
+      { src: "images/starship-redesign/profil.jpg", ratio: 0.529, caption: "Page artiste, profil" },
+      { src: "images/starship-redesign/album.jpg", ratio: 1.196, caption: "Page artiste, albums" },
+      { src: "images/starship-redesign/galerie.jpg", ratio: 0.614, caption: "Page artiste, galerie" }
+    ],
+    figma: "",
+    link: ""
+  },
+  {
     id: "landing-pages-showroomprive",
     title: "Landing pages pour Showroomprivé",
     year: "2025–2026",
