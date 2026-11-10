@@ -185,3 +185,15 @@ nav a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}
 .j-nav:hover{background:var(--accent);color:#fff}
 .j-prev{left:8px}.j-next{right:8px}
 @media (max-width:640px){.track{padding:32px 20px 28px}.step img{height:min(460px,64vh)}.j-nav{display:none}}
+
+/* Landing page interactive reconstruite (sans Figma) */
+.proto{aspect-ratio:16/10;display:flex;justify-content:center;background:radial-gradient(120% 120% at 50% 40%,#b3764f 0%,#8a5436 60%,#6f4129 100%);overflow:hidden}
+.proto-stage{position:relative;height:100%;flex:none}
+.proto-img{display:block;height:100%;width:auto;transition:opacity .14s;user-select:none}
+.spot{position:absolute;padding:0;border:0;background:transparent;cursor:pointer}
+.spot:hover{background:rgba(255,255,255,.14)}
+.spot:focus-visible{outline:3px solid #fff;outline-offset:-3px}
+.proto-tools{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:16px 0 0}
+.proto-tools button{font:inherit;font-size:.9rem;padding:9px 16px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.proto-tools button:hover{border-color:var(--accent);color:var(--accent)}
+@media (max-width:640px){.proto{aspect-ratio:auto;height:min(78vh,560px)}}

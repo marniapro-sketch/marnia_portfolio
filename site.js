@@ -113,7 +113,9 @@ if (page === "project") {
         <a class="back" href="project.html?id=${encodeURIComponent(p.id)}">${esc(p.title)}</a>
         <h1>${esc(sec.heading || sec.title)}</h1>
         ${sec.text ? `<p class="lead">${esc(sec.text)}</p>` : ""}
-        ${sec.figma && sec.frame === "desktop" ? `<div class="monitor"><div class="monitor-screen"><iframe src="${esc(figmaEmbed(sec.figma, true))}" title="Landing page interactive : ${esc(p.title)}" allowfullscreen></iframe></div></div><p class="phone-hint">Cliquez dans l’écran et faites défiler pour essayer la landing page.</p>` : ""}
+        ${sec.proto ? `<div class="monitor"><div class="monitor-screen"><div class="proto"><div class="proto-stage"><img class="proto-img" alt="" draggable="false"></div></div></div></div>
+        <p class="phone-hint">Cliquez sur les boutons de la page, comme un vrai participant.</p>
+        <p class="proto-tools"><button type="button" class="proto-reset">↺ Recommencer</button>${(sec.proto.extra || []).map(x => `<button type="button" class="proto-go" data-to="${esc(x)}">${esc(sec.proto.screens.find(sc => sc.id === x).title)}</button>`).join("")}</p>` : ""}
         ${sec.figma && !sec.frame ? `<div class="figma"><iframe src="${esc(figmaEmbed(sec.figma))}" title="Prototype Figma : ${esc(p.title)}" allowfullscreen></iframe></div>` : ""}
         ${phones.length ? `<div class="phones">${phones.map((s, k) => `<figure class="phone"><button class="zoom" type="button" data-i="${k}" aria-label="Agrandir l’écran"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></button></figure>`).join("")}</div>` : ""}
         ${journey.length ? `<div class="journey"><button class="j-nav j-prev" type="button" aria-label="Précédent">‹</button><button class="j-nav j-next" type="button" aria-label="Suivant">›</button><ol class="track">${journey.map((s, k) => `${s.sep === "|" ? "" : ""}<li class="step"><button class="zoom" type="button" data-i="${k}" aria-label="Agrandir l’écran"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></button><p class="cap"><b>${String(k + 1).padStart(2, "0")}</b> ${esc(s.caption || "")}</p></li>${s.sep && s.sep !== "|" ? `<li class="sep" aria-hidden="true">${esc(s.sep)}</li>` : ""}${s.sep === "|" ? `<li class="sep-line" aria-hidden="true"><span>Cas particuliers</span></li>` : ""}`).join("")}</ol></div>` : ""}
@@ -122,6 +124,30 @@ if (page === "project") {
       if (zoomList.length) {
         const open = lightbox(zoomList);
         el.querySelectorAll(".zoom").forEach(b => b.addEventListener("click", () => open(+b.dataset.i, b)));
+      }
+      if (sec.proto) {
+        const P = sec.proto, [W, H] = P.size, by = Object.fromEntries(P.screens.map(sc => [sc.id, sc]));
+        const stage = el.querySelector(".proto-stage"), img = el.querySelector(".proto-img");
+        stage.style.aspectRatio = `${W} / ${H}`;
+        const go = id => {
+          const sc = by[id]; if (!sc) return;
+          img.style.opacity = 0;
+          setTimeout(() => {
+            img.src = sc.src; img.alt = sc.title;
+            stage.querySelectorAll(".spot").forEach(n => n.remove());
+            sc.spots.forEach(([x, y, w, h, to]) => {
+              const a = document.createElement("button");
+              a.type = "button"; a.className = "spot"; a.setAttribute("aria-label", "Continuer");
+              a.style.cssText = `left:${x / W * 100}%;top:${y / H * 100}%;width:${w / W * 100}%;height:${h / H * 100}%`;
+              a.addEventListener("click", () => go(Array.isArray(to) ? to[Math.floor(Math.random() * to.length)] : to));
+              stage.appendChild(a);
+            });
+            img.style.opacity = 1;
+          }, 140);
+        };
+        go(P.start);
+        el.querySelector(".proto-reset").addEventListener("click", () => go(P.start));
+        el.querySelectorAll(".proto-go").forEach(b => b.addEventListener("click", () => go(b.dataset.to)));
       }
       const track = el.querySelector(".track");
       if (track) {
