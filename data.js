@@ -240,7 +240,7 @@ const PROJECTS = [
     hero: "",
     summary: "Landing page et vidéo de l’offre exclusive Armani Beauty, créées chez Showroomprivé.",
     description: [
-      "Offre exclusive Armani Beauty, réalisée pendant mon alternance chez Showroomprivé : jusqu’à -30 % et trois cadeaux offerts dès 60 € d’achats avec le code SHOWROOM. J’ai conçu la landing page en deux versions, ordinateur et mobile, avec un carrousel de catégories pour les éditions limitées, puis une vidéo animée pour présenter l’offre."
+      "Offre exclusive Armani Beauty, réalisée pendant mon alternance chez Showroomprivé : jusqu’à -30 % et trois cadeaux offerts dès 60 € d’achats avec le code SHOWROOM. J’ai conçu la landing page en deux versions, ordinateur et mobile, avec un carrousel de catégories pour les éditions limitées, puis une vidéo animée, pensée pour la landing page et diffusée avant que les visiteurs n’atterrissent dessus."
     ],
     images: [],
     sections: [
@@ -248,6 +248,7 @@ const PROJECTS = [
         id: "video",
         title: "Voir la vidéo",
         heading: "Vidéo",
+        text: "Vidéo réalisée pour la landing page : elle s’affiche avant que les visiteurs n’atterrissent dessus.",
         image: "images/armani/tuile-video.jpg",
         video: { src: "images/armani/video.mp4", poster: "images/armani/poster.jpg" }
       },
