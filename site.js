@@ -112,8 +112,8 @@ if (page === "project") {
         <a class="back" href="project.html?id=${encodeURIComponent(p.id)}">${esc(p.title)}</a>
         <h1>${esc(sec.heading || sec.title)}</h1>
         ${sec.text ? `<p class="lead">${esc(sec.text)}</p>` : ""}
-        ${sec.figma && sec.phoneFrame ? `<div class="phone-live"><iframe src="${esc(figmaEmbed(sec.figma, true))}" title="Landing page interactive : ${esc(p.title)}" allowfullscreen></iframe></div><p class="phone-hint">Cliquez dans le téléphone pour essayer la landing page.</p>` : ""}
-        ${sec.figma && !sec.phoneFrame ? `<div class="figma"><iframe src="${esc(figmaEmbed(sec.figma))}" title="Prototype Figma : ${esc(p.title)}" allowfullscreen></iframe></div>` : ""}
+        ${sec.figma && sec.frame === "desktop" ? `<div class="monitor"><div class="monitor-screen"><iframe src="${esc(figmaEmbed(sec.figma, true))}" title="Landing page interactive : ${esc(p.title)}" allowfullscreen></iframe></div></div><p class="phone-hint">Cliquez dans l’écran et faites défiler pour essayer la landing page.</p>` : ""}
+        ${sec.figma && !sec.frame ? `<div class="figma"><iframe src="${esc(figmaEmbed(sec.figma))}" title="Prototype Figma : ${esc(p.title)}" allowfullscreen></iframe></div>` : ""}
         ${phones.length ? `<div class="phones">${phones.map((s, k) => `<figure class="phone"><button class="zoom" type="button" data-i="${k}" aria-label="Agrandir l’écran"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></button></figure>`).join("")}</div>` : ""}
         ${shots.length ? `<div class="gallery">${rows(shots, phones.length, sec.rowSizes)}</div>` : ""}
         <p class="back-bottom"><a class="back" href="project.html?id=${encodeURIComponent(p.id)}">Retour à ${esc(p.title)}</a></p>`;
