@@ -19,7 +19,7 @@ document.body.insertAdjacentHTML("beforeend", `
 
 function cover(p) {
   return p.cover
-    ? `<img src="${esc(p.cover)}" alt="" loading="lazy">`
+    ? `<img src="${esc(p.cover)}" alt="" loading="lazy"${p.coverFocus ? ` style="object-position:${esc(p.coverFocus)}"` : ""}>`
     : `<div class="ph" aria-hidden="true">${esc(p.title.charAt(0))}</div>`;
 }
 
@@ -106,7 +106,7 @@ if (page === "project") {
       <a class="back" href="index.html">Tous les projets</a>
       <h1>${esc(p.title)}</h1>
       <p class="lead">${esc(lead)}</p>
-      <ul class="tags"><li>${esc(p.role)}</li>${p.tags.map(t => `<li>${esc(t)}</li>`).join("")}${p.year ? `<li>${esc(p.year)}</li>` : ""}</ul>
+      <ul class="tags"><li>${esc(p.role)}</li>${p.tags.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
       ${heroSrc ? `<button class="zoom hero-zoom" type="button" data-i="0" aria-label="Agrandir l’image"><img class="hero-img" src="${esc(heroSrc)}" alt="${esc(p.title)}"></button>` : ""}
       ${shots.length ? `<div class="gallery">${rows(shots, heroSrc ? 1 : 0)}</div>` : ""}
       ${more.length ? `<div class="prose">${more.map(t => `<p>${esc(t)}</p>`).join("")}</div>` : ""}
@@ -115,7 +115,7 @@ if (page === "project") {
       ${others.length ? `<section class="more"><h2>Autres projets</h2><div class="more-grid">${others.map(o => `
         <a class="mini" href="project.html?id=${encodeURIComponent(o.id)}">
           <div class="mini-img">${cover(o)}</div>
-          <div class="mini-cap"><strong>${esc(o.title)}</strong><span>${esc(o.year || o.tags[0] || "")}</span></div>
+          <div class="mini-cap"><strong>${esc(o.title)}</strong></div>
         </a>`).join("")}</div></section>` : ""}`;
     if (zoomList.length) {
       const open = lightbox(zoomList);
