@@ -236,4 +236,27 @@ const PROJECTS = [
       }
     ]
   },
+  {
+    id: "fdj-halloween-2026",
+    title: "FDJ Halloween 2026",
+    year: "2026",                          // non affiché sur le site
+    role: "Design digital",
+    tags: ["Landing page", "Jeu d’argent"],
+    cover: "images/fdj-halloween/cover.jpg",   // image de la grille d’accueil
+    hero: "",
+    summary: "Landing page de l’opération LOTO Halloween 2026, créée chez Showroomprivé.",
+    description: [
+      "Opération LOTO Halloween 2026 de la FDJ, réalisée pendant mon alternance chez Showroomprivé : un jackpot minimum de 10 millions d’euros à gagner le samedi 31 octobre, avec 10 codes gagnants à 20 000 €. J’ai conçu la landing page aux couleurs d’Halloween en deux versions, ordinateur et mobile, avec un carrousel de packs tirage."
+    ],
+    images: [],
+    sections: [
+      {
+        id: "lp",
+        title: "Voir la landing page",
+        heading: "Landing page",
+        image: "images/fdj-halloween/tuile-lp.jpg",
+        shots: { desk: "images/fdj-halloween/lp-desk.jpg", mob: "images/fdj-halloween/lp-mob.jpg" }
+      }
+    ]
+  },
 ];
