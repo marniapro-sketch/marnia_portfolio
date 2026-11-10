@@ -150,3 +150,12 @@ nav a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}
 .mini:hover .mini-cap strong{color:var(--accent)}
 .mini-cap span{display:block;margin-top:2px;color:var(--mute);font-size:.92rem}
 @media (max-width:640px){.more-grid{grid-template-columns:1fr}.lb-nav{font-size:2.2rem!important}}
+
+/* Page « choix » d'un projet (landing page, écrans de jeux, kits de com) */
+.choices{margin:8px 0 0}
+.phones{display:grid;grid-template-columns:repeat(4,1fr);gap:36px 28px;max-width:1000px;margin:8px auto 0}
+.phone{margin:0;background:#121214;padding:9px;border-radius:34px;box-shadow:0 14px 34px rgba(0,0,0,.18)}
+.phone .zoom{border-radius:26px;overflow:hidden;line-height:0}
+.phone img{display:block;width:100%;height:auto}
+.project .back-bottom{text-align:center;margin:56px 0 0}
+@media (max-width:980px){.phones{grid-template-columns:repeat(2,1fr);max-width:560px}}

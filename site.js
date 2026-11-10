@@ -89,39 +89,66 @@ function lightbox(list) {
 
 /* Détail d'un projet */
 if (page === "project") {
-  const id = new URLSearchParams(location.search).get("id");
+  const qs = new URLSearchParams(location.search);
+  const id = qs.get("id");
   const i = PROJECTS.findIndex(p => p.id === id);
   const el = document.getElementById("project");
   if (i < 0) {
     el.innerHTML = `<h1>Projet introuvable</h1><p><a href="index.html">Retour aux projets</a></p>`;
   } else {
     const p = PROJECTS[i];
-    document.title = `${p.title} – ${SITE.name}`;
-    const [lead, ...more] = p.description;
-    const heroSrc = ("hero" in p) ? p.hero : p.cover;   // hero: "" = pas de bannière
-    const shots = p.images.map(im => (typeof im === "string" ? { src: im } : im));
-    const zoomList = [...(heroSrc ? [{ src: heroSrc, alt: p.title }] : []), ...shots.map(s => ({ src: s.src, alt: s.caption || "" }))];
-    // Les 3 projets suivants dans la liste (sans le projet actuel)
-    const others = [1, 2, 3].map(k => PROJECTS[(i + k) % PROJECTS.length]).filter((o, k, a) => o.id !== p.id && a.findIndex(q => q.id === o.id) === k);
+    const sec = (p.sections || []).find(s => s.id === qs.get("section"));
     el.className = "project";
-    el.innerHTML = `
-      <a class="back" href="index.html">Tous les projets</a>
-      <h1>${esc(p.title)}</h1>
-      ${lead ? `<p class="lead">${esc(lead)}</p>` : ""}
-      <ul class="tags"><li>${esc(p.role)}</li>${p.tags.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
-      ${heroSrc ? `<button class="zoom hero-zoom" type="button" data-i="0" aria-label="Agrandir l’image"><img class="hero-img" src="${esc(heroSrc)}" alt="${esc(p.title)}"></button>` : ""}
-      ${shots.length ? `<div class="gallery">${rows(shots, heroSrc ? 1 : 0, p.rowSizes)}</div>` : ""}
-      ${more.length ? `<div class="prose">${more.map(t => `<p>${esc(t)}</p>`).join("")}</div>` : ""}
-      ${p.figma ? `<h2>Prototype interactif</h2><div class="figma"><iframe src="${esc(figmaEmbed(p.figma))}" title="Prototype Figma : ${esc(p.title)}" allowfullscreen></iframe></div>` : ""}
-      ${p.link ? `<p style="text-align:center;margin-top:32px"><a class="btn" href="${esc(p.link)}">Voir le projet en ligne</a></p>` : ""}
-      ${others.length ? `<section class="more"><h2>Autres projets</h2><div class="more-grid">${others.map(o => `
-        <a class="mini" href="project.html?id=${encodeURIComponent(o.id)}">
-          <div class="mini-img">${cover(o)}</div>
-          <div class="mini-cap"><strong>${esc(o.title)}</strong></div>
-        </a>`).join("")}</div></section>` : ""}`;
-    if (zoomList.length) {
-      const open = lightbox(zoomList);
-      el.querySelectorAll(".zoom").forEach(b => b.addEventListener("click", () => open(+b.dataset.i, b)));
+    if (sec) {
+      /* Page d'un choix (landing page, écrans de jeux, kits de com…) */
+      document.title = `${sec.heading || sec.title} – ${p.title} – ${SITE.name}`;
+      const shots = (sec.images || []).map(im => (typeof im === "string" ? { src: im } : im));
+      const phones = sec.phones || [];
+      const zoomList = [...phones, ...shots].map(s => ({ src: s.src, alt: s.caption || "" }));
+      el.innerHTML = `
+        <a class="back" href="project.html?id=${encodeURIComponent(p.id)}">${esc(p.title)}</a>
+        <h1>${esc(sec.heading || sec.title)}</h1>
+        ${sec.text ? `<p class="lead">${esc(sec.text)}</p>` : ""}
+        ${sec.figma ? `<div class="figma"><iframe src="${esc(figmaEmbed(sec.figma))}" title="Prototype Figma : ${esc(p.title)}" allowfullscreen></iframe></div>` : ""}
+        ${phones.length ? `<div class="phones">${phones.map((s, k) => `<figure class="phone"><button class="zoom" type="button" data-i="${k}" aria-label="Agrandir l’écran"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></button></figure>`).join("")}</div>` : ""}
+        ${shots.length ? `<div class="gallery">${rows(shots, phones.length, sec.rowSizes)}</div>` : ""}
+        <p class="back-bottom"><a class="back" href="project.html?id=${encodeURIComponent(p.id)}">Retour à ${esc(p.title)}</a></p>`;
+      if (zoomList.length) {
+        const open = lightbox(zoomList);
+        el.querySelectorAll(".zoom").forEach(b => b.addEventListener("click", () => open(+b.dataset.i, b)));
+      }
+    } else {
+      document.title = `${p.title} – ${SITE.name}`;
+      const [lead, ...more] = p.description;
+      const heroSrc = ("hero" in p) ? p.hero : p.cover;   // hero: "" = pas de bannière
+      const shots = p.images.map(im => (typeof im === "string" ? { src: im } : im));
+      const zoomList = [...(heroSrc ? [{ src: heroSrc, alt: p.title }] : []), ...shots.map(s => ({ src: s.src, alt: s.caption || "" }))];
+      // Les 3 projets suivants dans la liste (sans le projet actuel)
+      const others = [1, 2, 3].map(k => PROJECTS[(i + k) % PROJECTS.length]).filter((o, k, a) => o.id !== p.id && a.findIndex(q => q.id === o.id) === k);
+      el.innerHTML = `
+        <a class="back" href="index.html">Tous les projets</a>
+        <h1>${esc(p.title)}</h1>
+        ${lead ? `<p class="lead">${esc(lead)}</p>` : ""}
+        <ul class="tags"><li>${esc(p.role)}</li>${p.tags.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
+        ${p.sections ? `<div class="more-grid choices">${p.sections.map(s => `
+          <a class="mini" href="project.html?id=${encodeURIComponent(p.id)}&section=${encodeURIComponent(s.id)}">
+            <div class="mini-img"><img src="${esc(s.image)}" alt="" loading="lazy"></div>
+            <div class="mini-cap"><strong>${esc(s.title)}</strong></div>
+          </a>`).join("")}</div>` : ""}
+        ${heroSrc ? `<button class="zoom hero-zoom" type="button" data-i="0" aria-label="Agrandir l’image"><img class="hero-img" src="${esc(heroSrc)}" alt="${esc(p.title)}"></button>` : ""}
+        ${shots.length ? `<div class="gallery">${rows(shots, heroSrc ? 1 : 0, p.rowSizes)}</div>` : ""}
+        ${more.length ? `<div class="prose">${more.map(t => `<p>${esc(t)}</p>`).join("")}</div>` : ""}
+        ${p.figma ? `<h2>Prototype interactif</h2><div class="figma"><iframe src="${esc(figmaEmbed(p.figma))}" title="Prototype Figma : ${esc(p.title)}" allowfullscreen></iframe></div>` : ""}
+        ${p.link ? `<p style="text-align:center;margin-top:32px"><a class="btn" href="${esc(p.link)}">Voir le projet en ligne</a></p>` : ""}
+        ${others.length ? `<section class="more"><h2>Autres projets</h2><div class="more-grid">${others.map(o => `
+          <a class="mini" href="project.html?id=${encodeURIComponent(o.id)}">
+            <div class="mini-img">${cover(o)}</div>
+            <div class="mini-cap"><strong>${esc(o.title)}</strong></div>
+          </a>`).join("")}</div></section>` : ""}`;
+      if (zoomList.length) {
+        const open = lightbox(zoomList);
+        el.querySelectorAll(".zoom").forEach(b => b.addEventListener("click", () => open(+b.dataset.i, b)));
+      }
     }
   }
 }

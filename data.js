@@ -173,18 +173,59 @@ const PROJECTS = [
     link: ""
   },
   {
-    id: "landing-pages-showroomprive",
-    title: "Landing pages pour Showroomprivé",
-    year: "2025–2026",
-    role: "Graphiste designer (alternance)",
-    tags: ["Web", "UI design"],
-    cover: "",            // ex. "landing-pages.jpg" (mets l’image à côté de index.html)
-    summary: "Conception de landing pages et amélioration saisonnière de l’interface du site.",
+    id: "carte-noire",
+    title: "Carte Noire",
+    year: "2025",                          // non affiché sur le site
+    role: "Design digital",
+    tags: ["Landing page", "Jeu-concours"],
+    cover: "images/carte-noire/cover.jpg",   // image de la grille d’accueil
+    hero: "",                              // pas de grande bannière
+    summary: "Landing page interactive d’un jeu-concours, créée pendant mon alternance chez Showroomprivé.",
     description: [
-      "Dans le cadre de mon alternance chez Showroomprivé, j’ai conçu des landing pages sur Figma et fait évoluer l’interface du site au fil des saisons."
+      "Jeu-concours Carte Noire, réalisé pendant mon alternance chez Showroomprivé. Chaque participant découvre une surprise : une machine Aroma Signature à gagner ou un code privilège offrant 45 % de réduction. J’ai conçu la landing page et les écrans du jeu sur mobile, de l’accueil jusqu’au résultat, puis décliné le kit de communication."
+    ],
+    // Ce projet affiche trois choix au lieu d’une galerie. Chaque choix ouvre sa propre page.
+    sections: [
+      {
+        id: "lp",
+        title: "Voir la landing page",
+        heading: "Landing page",
+        image: "images/carte-noire/tuile-lp.jpg",
+        figma: "https://www.figma.com/design/J4jh7LHC53S62tDmy3NODQ/LP-CARTE_NOIRE?node-id=1-2&t=jXoQrh54rnWdLJ3y-1"
+      },
+      {
+        id: "jeux",
+        title: "Voir les écrans de jeux",
+        heading: "Écrans de jeux",
+        image: "images/carte-noire/tuile-ecrans.jpg",
+        phones: [
+          { src: "images/carte-noire/ecrans/01-accueil.jpg", caption: "Accueil du jeu" },
+          { src: "images/carte-noire/ecrans/02-surprise.jpg", caption: "Choix de la boisson" },
+          { src: "images/carte-noire/ecrans/03-gagne-machine.jpg", caption: "Gagné : la machine" },
+          { src: "images/carte-noire/ecrans/04-gagne-code.jpg", caption: "Gagné : le code privilège" },
+          { src: "images/carte-noire/ecrans/05-consentements.jpg", caption: "Consentements" },
+          { src: "images/carte-noire/ecrans/06-deja-participe.jpg", caption: "Déjà participé" },
+          { src: "images/carte-noire/ecrans/07-connexion.jpg", caption: "Connexion à l’application" },
+          { src: "images/carte-noire/ecrans/08-merci.jpg", caption: "Remerciement" }
+        ]
+      },
+      {
+        id: "kit",
+        title: "Voir les kits de com",
+        heading: "Kits de communication",
+        image: "images/carte-noire/tuile-kit.jpg",
+        rowSizes: [2, 2, 1],
+        images: [
+          { src: "images/carte-noire/kit/visuel-principal.jpg", ratio: 1.463, caption: "Visuel principal" },
+          { src: "images/carte-noire/kit/visuel-carre.jpg", ratio: 2.0, caption: "Visuel avec logo" },
+          { src: "images/carte-noire/kit/visuel-a-la-une.jpg", ratio: 1.778, caption: "Visuel « À la une »" },
+          { src: "images/carte-noire/kit/visuel-sans-texte.jpg", ratio: 1.884, caption: "Visuel sans texte" },
+          { src: "images/carte-noire/kit/banniere.jpg", ratio: 5.311, caption: "Bannière" }
+        ]
+      }
     ],
     images: [],
-    figma: "",            // colle ici le lien de partage Figma
+    figma: "",
     link: ""
   },
   {
