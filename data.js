@@ -60,6 +60,29 @@ const PROJECTS = [
     link: ""
   },
   {
+    id: "alternance-momji",
+    title: "Alternance Momji",
+    year: "2025",                          // non affiché sur le site
+    role: "Design graphique",
+    tags: ["Print", "Pédagogie"],
+    cover: "images/momji/cover.jpg",       // image de la grille d’accueil
+    hero: "",                              // pas de grande bannière
+    rowSizes: [2, 3],                      // 2 images sur la 1re ligne, puis 3
+    summary: "Conception d’une mallette pédagogique pour apprendre l’anglais aux enfants.",
+    description: [
+      "Lors de ma première alternance, j’ai eu l’opportunité de participer à la conception d’une mallette pédagogique commercialisée par Momji, destinée aux familles et aux nounous. Ce projet avait pour objectif de faciliter l’apprentissage de l’anglais aux enfants à travers des activités ludiques et interactives. J’ai contribué à la création des supports visuels et du design de la mallette afin de rendre son contenu attractif et accessible aux plus jeunes. Cette expérience m’a permis de développer mes compétences en conception graphique tout en travaillant sur un projet à fort impact éducatif."
+    ],
+    images: [
+      { src: "images/momji/i-spy.jpg", ratio: 1.931, caption: "I Spy, plateaux de jeu Velleda" },
+      { src: "images/momji/tic-tac-toe.jpg", ratio: 1.942, caption: "Tic Tac Toe, plateaux de jeu Velleda" },
+      { src: "images/momji/tell-me-about-your-day.jpg", ratio: 1.779, caption: "Tell me about your day" },
+      { src: "images/momji/recipes.jpg", ratio: 1.88, caption: "Recipes" },
+      { src: "images/momji/how-to.jpg", ratio: 1.788, caption: "How to, guide explicatif de la mallette" }
+    ],
+    figma: "",
+    link: ""
+  },
+  {
     id: "landing-pages-showroomprive",
     title: "Landing pages pour Showroomprivé",
     year: "2025–2026",
@@ -84,21 +107,6 @@ const PROJECTS = [
     summary: "Visuels générés avec l’IA et kits de communication pour les marques et les ventes.",
     description: [
       "J’ai créé des visuels promotionnels avec des outils d’IA (Midjourney, Gemini, Claude) et des kits de communication pour les marques et les ventes, avec Figma et Photoshop."
-    ],
-    images: [],
-    figma: "",
-    link: ""
-  },
-  {
-    id: "pdf-interactif-momji",
-    title: "PDF interactif et contenus pédagogiques",
-    year: "2023–2025",
-    role: "Assistante graphiste (alternance)",
-    tags: ["Édition", "Motion"],
-    cover: "",
-    summary: "PDF interactif, fichiers pédagogiques et contenus vidéo pour les réseaux sociaux.",
-    description: [
-      "Chez Momji / Kinougarde, j’ai créé des PDF interactifs sur InDesign, des fichiers pédagogiques et du contenu vidéo pour les réseaux sociaux avec After Effects et Premiere Pro."
     ],
     images: [],
     figma: "",

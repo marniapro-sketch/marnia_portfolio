@@ -38,11 +38,13 @@ if (page === "home") {
 }
 
 /* Galerie : lignes de 3 images à hauteur égale, sans recadrage. `start` = numéro de la première image dans l'agrandissement */
-function rows(images, start) {
+function rows(images, start, sizes) {
   const list = images.map(im => (typeof im === "string" ? { src: im } : im));
-  let html = "";
-  for (let i = 0; i < list.length; i += 3) {
-    html += `<div class="row">${list.slice(i, i + 3).map((s, k) => `<figure class="shot" style="flex:${s.ratio || 1.4} 1 0"><button class="zoom" type="button" data-i="${start + i + k}" aria-label="Agrandir l’image"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></button></figure>`).join("")}</div>`;
+  let html = "", i = 0, r = 0;
+  while (i < list.length) {
+    const n = (sizes && sizes[r]) || 3;   // `sizes` = nombre d'images par ligne (3 par défaut)
+    html += `<div class="row">${list.slice(i, i + n).map((s, k) => `<figure class="shot" style="flex:${s.ratio || 1.4} 1 0"><button class="zoom" type="button" data-i="${start + i + k}" aria-label="Agrandir l’image"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></button></figure>`).join("")}</div>`;
+    i += n; r++;
   }
   return html;
 }
@@ -108,7 +110,7 @@ if (page === "project") {
       <p class="lead">${esc(lead)}</p>
       <ul class="tags"><li>${esc(p.role)}</li>${p.tags.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
       ${heroSrc ? `<button class="zoom hero-zoom" type="button" data-i="0" aria-label="Agrandir l’image"><img class="hero-img" src="${esc(heroSrc)}" alt="${esc(p.title)}"></button>` : ""}
-      ${shots.length ? `<div class="gallery">${rows(shots, heroSrc ? 1 : 0)}</div>` : ""}
+      ${shots.length ? `<div class="gallery">${rows(shots, heroSrc ? 1 : 0, p.rowSizes)}</div>` : ""}
       ${more.length ? `<div class="prose">${more.map(t => `<p>${esc(t)}</p>`).join("")}</div>` : ""}
       ${p.figma ? `<h2>Prototype interactif</h2><div class="figma"><iframe src="${esc(figmaEmbed(p.figma))}" title="Prototype Figma : ${esc(p.title)}" allowfullscreen></iframe></div>` : ""}
       ${p.link ? `<p style="text-align:center;margin-top:32px"><a class="btn" href="${esc(p.link)}">Voir le projet en ligne</a></p>` : ""}
