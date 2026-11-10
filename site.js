@@ -107,7 +107,7 @@ if (page === "project") {
     el.innerHTML = `
       <a class="back" href="index.html">Tous les projets</a>
       <h1>${esc(p.title)}</h1>
-      <p class="lead">${esc(lead)}</p>
+      ${lead ? `<p class="lead">${esc(lead)}</p>` : ""}
       <ul class="tags"><li>${esc(p.role)}</li>${p.tags.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
       ${heroSrc ? `<button class="zoom hero-zoom" type="button" data-i="0" aria-label="Agrandir l’image"><img class="hero-img" src="${esc(heroSrc)}" alt="${esc(p.title)}"></button>` : ""}
       ${shots.length ? `<div class="gallery">${rows(shots, heroSrc ? 1 : 0, p.rowSizes)}</div>` : ""}

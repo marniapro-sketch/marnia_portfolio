@@ -132,6 +132,26 @@ const PROJECTS = [
     link: ""
   },
   {
+    id: "projets-personnels",
+    title: "Projets personnels",
+    year: "2022",                          // non affiché sur le site
+    role: "Direction artistique",
+    tags: ["Affiches"],
+    cover: "images/projets-personnels/cover.jpg",   // image de la grille d’accueil
+    hero: "",                              // pas de grande bannière
+    rowSizes: [4],                         // une seule ligne (passera à 5 avec Time to Hunt)
+    summary: "Série d’affiches : Blessed-Cursed, Starboy, Ningning : Hello, Everglow.",
+    description: [],                       // pas de texte pour ce projet
+    images: [
+      { src: "images/projets-personnels/blessed-cursed.jpg", ratio: 0.707, caption: "Blessed-Cursed" },
+      { src: "images/projets-personnels/starboy.jpg", ratio: 0.707, caption: "Starboy" },
+      { src: "images/projets-personnels/ningning-hello.jpg", ratio: 0.639, caption: "Ningning : Hello" },
+      { src: "images/projets-personnels/everglow.jpg", ratio: 0.707, caption: "Everglow" }
+    ],
+    figma: "",
+    link: ""
+  },
+  {
     id: "landing-pages-showroomprive",
     title: "Landing pages pour Showroomprivé",
     year: "2025–2026",
