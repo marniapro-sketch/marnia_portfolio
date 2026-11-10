@@ -40,6 +40,26 @@ const PROJECTS = [
     link: ""
   },
   {
+    id: "haig-club-x-aespa",
+    title: "HAIG CLUB x AESPA",
+    year: "2024",                          // non affiché sur le site
+    role: "Chef de projet",
+    tags: ["Packaging", "Campagne"],
+    cover: "images/haig-club-aespa/cover.jpg",   // image de la grille d’accueil
+    hero: "",                              // pas de grande bannière pour ce projet
+    summary: "Une collaboration entre le groupe de musique AESPA et la marque Haig Club.",
+    description: [
+      "Dans le cadre de ce projet, nous avons orchestré une collaboration unique entre le groupe de musique AESPA et la marque d’alcool Haig Club. Notre objectif était de fusionner les univers distincts de la musique et des spiritueux pour créer une campagne promotionnelle captivante et innovante. En tant que chef de projet, j’ai supervisé chaque étape de cette collaboration, assurant une intégration harmonieuse des deux marques."
+    ],
+    images: [
+      { src: "images/haig-club-aespa/coffrets.jpg", ratio: 1.77, caption: "Les trois faces du coffret" },
+      { src: "images/haig-club-aespa/bouteille-et-coffret.jpg", ratio: 1.77, caption: "Bouteille et coffret" },
+      { src: "images/haig-club-aespa/bouteille.jpg", ratio: 1.77, caption: "Bouteille" }
+    ],
+    figma: "",
+    link: ""
+  },
+  {
     id: "landing-pages-showroomprive",
     title: "Landing pages pour Showroomprivé",
     year: "2025–2026",

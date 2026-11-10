@@ -96,7 +96,7 @@ if (page === "project") {
     const p = PROJECTS[i];
     document.title = `${p.title} – ${SITE.name}`;
     const [lead, ...more] = p.description;
-    const heroSrc = p.hero || p.cover;
+    const heroSrc = ("hero" in p) ? p.hero : p.cover;   // hero: "" = pas de bannière
     const shots = p.images.map(im => (typeof im === "string" ? { src: im } : im));
     const zoomList = [...(heroSrc ? [{ src: heroSrc, alt: p.title }] : []), ...shots.map(s => ({ src: s.src, alt: s.caption || "" }))];
     // Les 3 projets suivants dans la liste (sans le projet actuel)
