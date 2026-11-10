@@ -37,14 +37,52 @@ if (page === "home") {
     </a>`).join("");
 }
 
-/* Galerie : lignes de 3 images à hauteur égale, sans recadrage */
-function rows(images) {
+/* Galerie : lignes de 3 images à hauteur égale, sans recadrage. `start` = numéro de la première image dans l'agrandissement */
+function rows(images, start) {
   const list = images.map(im => (typeof im === "string" ? { src: im } : im));
   let html = "";
   for (let i = 0; i < list.length; i += 3) {
-    html += `<div class="row">${list.slice(i, i + 3).map(s => `<figure class="shot" style="flex:${s.ratio || 1.4} 1 0"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></figure>`).join("")}</div>`;
+    html += `<div class="row">${list.slice(i, i + 3).map((s, k) => `<figure class="shot" style="flex:${s.ratio || 1.4} 1 0"><button class="zoom" type="button" data-i="${start + i + k}" aria-label="Agrandir l’image"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></button></figure>`).join("")}</div>`;
   }
   return html;
+}
+
+/* Agrandissement des images : clic pour ouvrir, flèches ou glissement pour changer, Échap pour fermer */
+function lightbox(list) {
+  let i = 0, opener = null, x0 = null;
+  const box = document.createElement("div");
+  box.className = "lb"; box.hidden = true;
+  box.setAttribute("role", "dialog"); box.setAttribute("aria-modal", "true"); box.setAttribute("aria-label", "Image agrandie");
+  box.innerHTML = `<button class="lb-close" type="button" aria-label="Fermer">✕</button>
+    ${list.length > 1 ? `<button class="lb-nav lb-prev" type="button" aria-label="Image précédente">‹</button><button class="lb-nav lb-next" type="button" aria-label="Image suivante">›</button><span class="lb-count"></span>` : ""}
+    <img alt="">`;
+  document.body.appendChild(box);
+  const img = box.querySelector("img"), count = box.querySelector(".lb-count");
+  const show = n => {
+    i = (n + list.length) % list.length;
+    img.src = list[i].src; img.alt = list[i].alt || "";
+    if (count) count.textContent = `${i + 1} / ${list.length}`;
+  };
+  const close = () => { box.hidden = true; document.body.style.overflow = ""; img.removeAttribute("src"); if (opener) opener.focus(); };
+  box.addEventListener("click", e => { if (e.target === box) close(); });
+  box.querySelector(".lb-close").addEventListener("click", close);
+  if (list.length > 1) {
+    box.querySelector(".lb-prev").addEventListener("click", () => show(i - 1));
+    box.querySelector(".lb-next").addEventListener("click", () => show(i + 1));
+    box.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener("touchend", e => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 50) show(i + (dx < 0 ? 1 : -1));
+    });
+  }
+  document.addEventListener("keydown", e => {
+    if (box.hidden) return;
+    if (e.key === "Escape") close();
+    if (list.length > 1 && e.key === "ArrowLeft") show(i - 1);
+    if (list.length > 1 && e.key === "ArrowRight") show(i + 1);
+  });
+  return (n, from) => { opener = from; show(n); box.hidden = false; document.body.style.overflow = "hidden"; box.querySelector(".lb-close").focus(); };
 }
 
 /* Détail d'un projet */
@@ -55,22 +93,34 @@ if (page === "project") {
   if (i < 0) {
     el.innerHTML = `<h1>Projet introuvable</h1><p><a href="index.html">Retour aux projets</a></p>`;
   } else {
-    const p = PROJECTS[i], next = PROJECTS[(i + 1) % PROJECTS.length];
+    const p = PROJECTS[i];
     document.title = `${p.title} – ${SITE.name}`;
-    
     const [lead, ...more] = p.description;
+    const heroSrc = p.hero || p.cover;
+    const shots = p.images.map(im => (typeof im === "string" ? { src: im } : im));
+    const zoomList = [...(heroSrc ? [{ src: heroSrc, alt: p.title }] : []), ...shots.map(s => ({ src: s.src, alt: s.caption || "" }))];
+    // Les 3 projets suivants dans la liste (sans le projet actuel)
+    const others = [1, 2, 3].map(k => PROJECTS[(i + k) % PROJECTS.length]).filter((o, k, a) => o.id !== p.id && a.findIndex(q => q.id === o.id) === k);
     el.className = "project";
     el.innerHTML = `
       <a class="back" href="index.html">Tous les projets</a>
       <h1>${esc(p.title)}</h1>
       <p class="lead">${esc(lead)}</p>
       <ul class="tags"><li>${esc(p.role)}</li>${p.tags.map(t => `<li>${esc(t)}</li>`).join("")}${p.year ? `<li>${esc(p.year)}</li>` : ""}</ul>
-      ${(p.hero || p.cover) ? `<img class="hero-img" src="${esc(p.hero || p.cover)}" alt="${esc(p.title)}">` : ""}
-      ${p.images.length ? `<div class="gallery">${rows(p.images)}</div>` : ""}
+      ${heroSrc ? `<button class="zoom hero-zoom" type="button" data-i="0" aria-label="Agrandir l’image"><img class="hero-img" src="${esc(heroSrc)}" alt="${esc(p.title)}"></button>` : ""}
+      ${shots.length ? `<div class="gallery">${rows(shots, heroSrc ? 1 : 0)}</div>` : ""}
       ${more.length ? `<div class="prose">${more.map(t => `<p>${esc(t)}</p>`).join("")}</div>` : ""}
       ${p.figma ? `<h2>Prototype interactif</h2><div class="figma"><iframe src="${esc(figmaEmbed(p.figma))}" title="Prototype Figma : ${esc(p.title)}" allowfullscreen></iframe></div>` : ""}
       ${p.link ? `<p style="text-align:center;margin-top:32px"><a class="btn" href="${esc(p.link)}">Voir le projet en ligne</a></p>` : ""}
-      <a class="next" href="project.html?id=${encodeURIComponent(next.id)}"><small>Projet suivant</small><strong>${esc(next.title)}</strong></a>`;
+      ${others.length ? `<section class="more"><h2>Autres projets</h2><div class="more-grid">${others.map(o => `
+        <a class="mini" href="project.html?id=${encodeURIComponent(o.id)}">
+          <div class="mini-img">${cover(o)}</div>
+          <div class="mini-cap"><strong>${esc(o.title)}</strong><span>${esc(o.year || o.tags[0] || "")}</span></div>
+        </a>`).join("")}</div></section>` : ""}`;
+    if (zoomList.length) {
+      const open = lightbox(zoomList);
+      el.querySelectorAll(".zoom").forEach(b => b.addEventListener("click", () => open(+b.dataset.i, b)));
+    }
   }
 }
 
