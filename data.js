@@ -259,4 +259,35 @@ const PROJECTS = [
       }
     ]
   },
+  {
+    id: "fdj-eurodreams",
+    title: "FDJ EuroDreams",
+    year: "2025",                          // non affiché sur le site
+    role: "Design digital",
+    tags: ["Landing page", "Vidéo"],
+    cover: "images/fdj-eurodreams/cover.jpg",   // image de la grille d’accueil
+    hero: "",
+    summary: "Landing page et vidéo du tirage exceptionnel EuroDreams, créées chez Showroomprivé.",
+    description: [
+      "Tirage exceptionnel EuroDreams de la FDJ, réalisé pendant mon alternance chez Showroomprivé : le jeudi 27 novembre, 10 gagnants garantis en France à 2 000 € par mois pendant 5 ans. J’ai conçu la landing page en deux versions, ordinateur et mobile, avec un carrousel autour du Super tirage, puis la vidéo d’animation de l’en-tête, pensée pour la landing page et diffusée avant que les visiteurs n’atterrissent dessus."
+    ],
+    images: [],
+    sections: [
+      {
+        id: "video",
+        title: "Voir la vidéo",
+        heading: "Vidéo",
+        text: "Vidéo réalisée pour la landing page : elle s’affiche avant que les visiteurs n’atterrissent dessus.",
+        image: "images/fdj-eurodreams/tuile-video.jpg",
+        video: { src: "images/fdj-eurodreams/video.mp4", poster: "images/fdj-eurodreams/poster.jpg" }
+      },
+      {
+        id: "lp",
+        title: "Voir la landing page",
+        heading: "Landing page",
+        image: "images/fdj-eurodreams/tuile-lp.jpg",
+        shots: { desk: "images/fdj-eurodreams/lp-desk.jpg", mob: "images/fdj-eurodreams/lp-mob.jpg" }
+      }
+    ]
+  },
 ];
