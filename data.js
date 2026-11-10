@@ -191,24 +191,8 @@ const PROJECTS = [
         title: "Voir la landing page",
         heading: "Landing page",
         image: "images/carte-noire/tuile-lp.jpg",
-        // Landing page interactive reconstruite sur le site (aucun lien avec Figma).
-        // Chaque écran a des zones cliquables : [x, y, largeur, hauteur, écran suivant] en pixels de l'image (640 x 1234).
-        // Un écran suivant en liste, par exemple ["gagne-machine", "gagne-code"], est tiré au hasard.
-        proto: {
-          start: "accueil",
-          size: [640, 1234],
-          extra: ["deja-participe", "connexion"],      // écrans accessibles par les liens sous l’écran
-          screens: [
-            { id: "accueil", title: "Accueil du jeu", src: "images/carte-noire/ecrans/01-accueil.jpg", spots: [[95, 1112, 450, 76, "surprise"]] },
-            { id: "surprise", title: "Choix de la boisson", src: "images/carte-noire/ecrans/02-surprise.jpg", spots: [[35, 555, 155, 300, "consentements"], [170, 610, 155, 260, "consentements"], [320, 590, 150, 280, "consentements"], [470, 550, 150, 320, "consentements"]] },
-            { id: "consentements", title: "Consentements", src: "images/carte-noire/ecrans/05-consentements.jpg", spots: [[95, 870, 450, 75, ["gagne-machine", "gagne-code"]]] },
-            { id: "gagne-machine", title: "Gagné : la machine", src: "images/carte-noire/ecrans/03-gagne-machine.jpg", spots: [[95, 891, 450, 75, "merci"]] },
-            { id: "gagne-code", title: "Gagné : le code privilège", src: "images/carte-noire/ecrans/04-gagne-code.jpg", spots: [[95, 870, 450, 75, "merci"]] },
-            { id: "merci", title: "Remerciement", src: "images/carte-noire/ecrans/08-merci.jpg", spots: [[95, 738, 450, 75, "accueil"]] },
-            { id: "deja-participe", title: "Déjà participé", src: "images/carte-noire/ecrans/06-deja-participe.jpg", spots: [[95, 1008, 450, 75, "accueil"]] },
-            { id: "connexion", title: "Connexion à l’application", src: "images/carte-noire/ecrans/07-connexion.jpg", spots: [[95, 645, 450, 75, "accueil"]] }
-          ]
-        }
+        // Landing page desktop reconstruite sur le site (aucun lien avec Figma).
+        page: "lp/carte-noire/index.html",
       },
       {
         id: "jeux",

@@ -113,9 +113,8 @@ if (page === "project") {
         <a class="back" href="project.html?id=${encodeURIComponent(p.id)}">${esc(p.title)}</a>
         <h1>${esc(sec.heading || sec.title)}</h1>
         ${sec.text ? `<p class="lead">${esc(sec.text)}</p>` : ""}
-        ${sec.proto ? `<div class="monitor"><div class="monitor-screen"><div class="proto"><div class="proto-stage"><img class="proto-img" alt="" draggable="false"></div></div></div></div>
-        <p class="phone-hint">Cliquez sur les boutons de la page, comme un vrai participant.</p>
-        <p class="proto-tools"><button type="button" class="proto-reset">↺ Recommencer</button>${(sec.proto.extra || []).map(x => `<button type="button" class="proto-go" data-to="${esc(x)}">${esc(sec.proto.screens.find(sc => sc.id === x).title)}</button>`).join("")}</p>` : ""}
+        ${sec.page ? `<div class="monitor"><div class="monitor-screen"><iframe src="${esc(sec.page)}" title="Landing page ${esc(p.title)}" loading="lazy"></iframe></div></div>
+        <p class="phone-hint">Faites défiler la page et utilisez les flèches, comme sur le vrai site.</p>` : ""}
         ${sec.figma && !sec.frame ? `<div class="figma"><iframe src="${esc(figmaEmbed(sec.figma))}" title="Prototype Figma : ${esc(p.title)}" allowfullscreen></iframe></div>` : ""}
         ${phones.length ? `<div class="phones">${phones.map((s, k) => `<figure class="phone"><button class="zoom" type="button" data-i="${k}" aria-label="Agrandir l’écran"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></button></figure>`).join("")}</div>` : ""}
         ${journey.length ? `<div class="journey"><button class="j-nav j-prev" type="button" aria-label="Précédent">‹</button><button class="j-nav j-next" type="button" aria-label="Suivant">›</button><ol class="track">${journey.map((s, k) => `${s.sep === "|" ? "" : ""}<li class="step"><button class="zoom" type="button" data-i="${k}" aria-label="Agrandir l’écran"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></button><p class="cap"><b>${String(k + 1).padStart(2, "0")}</b> ${esc(s.caption || "")}</p></li>${s.sep && s.sep !== "|" ? `<li class="sep" aria-hidden="true">${esc(s.sep)}</li>` : ""}${s.sep === "|" ? `<li class="sep-line" aria-hidden="true"><span>Cas particuliers</span></li>` : ""}`).join("")}</ol></div>` : ""}
