@@ -107,7 +107,8 @@ if (page === "project") {
       document.title = `${sec.heading || sec.title} – ${p.title} – ${SITE.name}`;
       const shots = (sec.images || []).map(im => (typeof im === "string" ? { src: im } : im));
       const phones = sec.phones || [];
-      const zoomList = [...phones, ...shots].map(s => ({ src: s.src, alt: s.caption || "" }));
+      const journey = sec.journey || [];
+      const zoomList = [...journey, ...phones, ...shots].map(s => ({ src: s.src, alt: s.caption || "" }));
       el.innerHTML = `
         <a class="back" href="project.html?id=${encodeURIComponent(p.id)}">${esc(p.title)}</a>
         <h1>${esc(sec.heading || sec.title)}</h1>
@@ -115,11 +116,18 @@ if (page === "project") {
         ${sec.figma && sec.frame === "desktop" ? `<div class="monitor"><div class="monitor-screen"><iframe src="${esc(figmaEmbed(sec.figma, true))}" title="Landing page interactive : ${esc(p.title)}" allowfullscreen></iframe></div></div><p class="phone-hint">Cliquez dans l’écran et faites défiler pour essayer la landing page.</p>` : ""}
         ${sec.figma && !sec.frame ? `<div class="figma"><iframe src="${esc(figmaEmbed(sec.figma))}" title="Prototype Figma : ${esc(p.title)}" allowfullscreen></iframe></div>` : ""}
         ${phones.length ? `<div class="phones">${phones.map((s, k) => `<figure class="phone"><button class="zoom" type="button" data-i="${k}" aria-label="Agrandir l’écran"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></button></figure>`).join("")}</div>` : ""}
+        ${journey.length ? `<div class="journey"><button class="j-nav j-prev" type="button" aria-label="Précédent">‹</button><button class="j-nav j-next" type="button" aria-label="Suivant">›</button><ol class="track">${journey.map((s, k) => `${s.sep === "|" ? "" : ""}<li class="step"><button class="zoom" type="button" data-i="${k}" aria-label="Agrandir l’écran"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></button><p class="cap"><b>${String(k + 1).padStart(2, "0")}</b> ${esc(s.caption || "")}</p></li>${s.sep && s.sep !== "|" ? `<li class="sep" aria-hidden="true">${esc(s.sep)}</li>` : ""}${s.sep === "|" ? `<li class="sep-line" aria-hidden="true"><span>Cas particuliers</span></li>` : ""}`).join("")}</ol></div>` : ""}
         ${shots.length ? `<div class="gallery">${rows(shots, phones.length, sec.rowSizes)}</div>` : ""}
         <p class="back-bottom"><a class="back" href="project.html?id=${encodeURIComponent(p.id)}">Retour à ${esc(p.title)}</a></p>`;
       if (zoomList.length) {
         const open = lightbox(zoomList);
         el.querySelectorAll(".zoom").forEach(b => b.addEventListener("click", () => open(+b.dataset.i, b)));
+      }
+      const track = el.querySelector(".track");
+      if (track) {
+        const by = dir => track.scrollBy({ left: dir * Math.max(300, track.clientWidth * 0.7), behavior: "smooth" });
+        el.querySelector(".j-prev").addEventListener("click", () => by(-1));
+        el.querySelector(".j-next").addEventListener("click", () => by(1));
       }
     } else {
       document.title = `${p.title} – ${SITE.name}`;
