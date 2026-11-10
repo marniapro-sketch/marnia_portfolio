@@ -152,6 +152,27 @@ const PROJECTS = [
     link: ""
   },
   {
+    id: "brochure-flyer",
+    title: "Brochure & Flyer",
+    year: "2022",                          // non affiché sur le site
+    role: "Mise en page",
+    tags: ["Print", "Édition"],
+    cover: "images/brochure-flyer/cover.jpg",   // image de la grille d’accueil
+    hero: "",                              // pas de grande bannière
+    rowSizes: [3, 2],                      // 3 images sur la 1re ligne, puis 2
+    summary: "Mise en page d’une brochure automobile et d’un dépliant beauté.",
+    description: [],                       // pas de texte pour ce projet
+    images: [
+      { src: "images/brochure-flyer/venue-couverture.jpg", ratio: 1.457, caption: "Brochure Venue, couverture" },
+      { src: "images/brochure-flyer/venue-highlights.jpg", ratio: 1.44, caption: "Brochure Venue, Highlights" },
+      { src: "images/brochure-flyer/venue-space.jpg", ratio: 1.44, caption: "Brochure Venue, Space" },
+      { src: "images/brochure-flyer/clio-depliant.jpg", ratio: 1.333, caption: "Dépliant Clio Beauty" },
+      { src: "images/brochure-flyer/clio-interieur.jpg", ratio: 1.333, caption: "Dépliant Clio Beauty, intérieur" }
+    ],
+    figma: "",
+    link: ""
+  },
+  {
     id: "landing-pages-showroomprive",
     title: "Landing pages pour Showroomprivé",
     year: "2025–2026",
