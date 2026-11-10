@@ -208,9 +208,14 @@ nav a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}
 .monitor-screen .scroller{aspect-ratio:16/11;overflow-y:auto;background:#000}
 .scroller img{display:block;width:100%;height:auto}
 .devview[hidden]{display:none}
-.phonedev{width:min(350px,100%);margin:28px auto 40px;background:#121214;padding:6px;border-radius:30px;box-shadow:0 18px 44px rgba(0,0,0,.22)}
+.phonedev{--ph:max(480px,min(720px,calc(100vh - 330px)));width:min(100%,max(300px,calc(var(--ph) * .5 + 12px)));margin:28px auto 40px;background:#121214;padding:6px;border-radius:30px;box-shadow:0 18px 44px rgba(0,0,0,.22)}
 .phonedev-screen{border-radius:24px;overflow:hidden}
-.phonedev .scroller{height:min(720px,78vh);overflow-y:auto;background:#000;scrollbar-width:none}
+.phonedev .scroller{height:var(--ph);overflow-y:auto;background:#000;scrollbar-width:none}
 .phonedev .scroller::-webkit-scrollbar{display:none}
 .monitor-screen .scroller{scrollbar-width:thin;scrollbar-color:#666 #121214}
 @media (max-width:640px){.monitor-screen .scroller{aspect-ratio:4/5}.phonedev{padding:5px;border-radius:26px}}
+
+/* Armani : l'écran entier tient dans la fenêtre dès l'arrivée */
+.monitor.devview{width:min(calc(100vw - 48px),max(760px,min(1400px,calc((100vh - 290px) * 1.6))))}
+.monitor.devview .scroller{aspect-ratio:16/10}
+@media (max-width:640px){.monitor.devview{width:100%}.monitor.devview .scroller{aspect-ratio:4/5}}
