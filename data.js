@@ -61,7 +61,7 @@ const PROJECTS = [
   },
   {
     id: "alternance-momji",
-    title: "Alternance Momji",
+    title: "Momji",
     year: "2025",                          // non affiché sur le site
     role: "Design graphique",
     tags: ["Print", "Pédagogie"],
