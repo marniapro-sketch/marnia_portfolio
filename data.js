@@ -191,7 +191,8 @@ const PROJECTS = [
         title: "Voir la landing page",
         heading: "Landing page",
         image: "images/carte-noire/tuile-lp.jpg",
-        figma: "https://www.figma.com/design/J4jh7LHC53S62tDmy3NODQ/LP-CARTE_NOIRE?node-id=1-2&t=jXoQrh54rnWdLJ3y-1"
+        figma: "https://www.figma.com/proto/J4jh7LHC53S62tDmy3NODQ/LP-CARTE_NOIRE?node-id=186-305&viewport=444%2C59%2C0.1&t=NXZVEUjQ7iudAf8P-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A2&page-id=0%3A1",
+        phoneFrame: true                 // affiche le prototype dans un téléphone, sans l’interface Figma
       },
       {
         id: "jeux",
