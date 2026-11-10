@@ -83,6 +83,30 @@ const PROJECTS = [
     link: ""
   },
   {
+    id: "happen-festival",
+    title: "Happen Festival",
+    year: "2022",                          // non affiché sur le site
+    role: "Direction artistique",
+    tags: ["Identité visuelle", "Print"],
+    cover: "images/happen-festival/cover.jpg",   // image de la grille d’accueil
+    hero: "",                              // pas de grande bannière
+    rowSizes: [3, 3],                      // 3 images par ligne
+    summary: "Identité, affiches et produits dérivés d’un festival de musique indie en Corée du Sud.",
+    description: [
+      "Création d’un festival en Corée du Sud basé sur la musique Indie, j’ai donc créé un logo, des affiches et des produits dérivés à vendre pendant le festival, Le style et le thème sont chill, le but de ce festival est de profiter des artistes présents avec une boisson chaude et des amis avec qui avoir de bonnes conversations."
+    ],
+    images: [
+      { src: "images/happen-festival/affiches-bleu.jpg", ratio: 1.333, caption: "Affiches, version bleue" },
+      { src: "images/happen-festival/affiches-vert.jpg", ratio: 1.333, caption: "Affiches, version verte" },
+      { src: "images/happen-festival/affiches-rouge.jpg", ratio: 1.333, caption: "Affiches, version rouge" },
+      { src: "images/happen-festival/billets.jpg", ratio: 1.667, caption: "Billets" },
+      { src: "images/happen-festival/livret.jpg", ratio: 1.333, caption: "Livret" },
+      { src: "images/happen-festival/tote-bag.jpg", ratio: 1.386, caption: "Tote bag" }
+    ],
+    figma: "",
+    link: ""
+  },
+  {
     id: "landing-pages-showroomprive",
     title: "Landing pages pour Showroomprivé",
     year: "2025–2026",
