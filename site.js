@@ -116,9 +116,9 @@ if (page === "project") {
         ${sec.page ? `<div class="monitor"><div class="monitor-screen"><iframe src="${esc(sec.page)}?v=25" title="Landing page ${esc(p.title)}" loading="lazy"></iframe></div></div>
         <p class="phone-hint">Faites défiler la page et utilisez les flèches, comme sur le vrai site.</p>` : ""}
         ${sec.video ? `<div class="vidbox"><video src="${esc(sec.video.src)}" poster="${esc(sec.video.poster || "")}" controls playsinline preload="metadata"></video></div>` : ""}
-        ${sec.shots ? `<div class="switch" role="group" aria-label="Version de la page"><button type="button" class="on" data-m="desk">Ordinateur</button><button type="button" data-m="mob">Mobile</button></div>
+        ${sec.shots ? `${sec.shots.mob ? `<div class="switch" role="group" aria-label="Version de la page"><button type="button" class="on" data-m="desk">Ordinateur</button><button type="button" data-m="mob">Mobile</button></div>` : ""}
         <div class="monitor devview" data-m="desk"><div class="monitor-screen"><div class="scroller"><img src="${esc(sec.shots.desk)}" alt="Landing page version ordinateur"></div></div></div>
-        <div class="phonedev devview" data-m="mob" hidden><div class="phonedev-screen"><div class="scroller"><img src="${esc(sec.shots.mob)}" alt="Landing page version mobile"></div></div></div>
+        ${sec.shots.mob ? `<div class="phonedev devview" data-m="mob" hidden><div class="phonedev-screen"><div class="scroller"><img src="${esc(sec.shots.mob)}" alt="Landing page version mobile"></div></div></div>` : ""}
         <p class="phone-hint">Faites défiler la page dans l’écran.</p>` : ""}
         ${sec.figma && !sec.frame ? `<div class="figma"><iframe src="${esc(figmaEmbed(sec.figma))}" title="Prototype Figma : ${esc(p.title)}" allowfullscreen></iframe></div>` : ""}
         ${phones.length ? `<div class="phones">${phones.map((s, k) => `<figure class="phone"><button class="zoom" type="button" data-i="${k}" aria-label="Agrandir l’écran"><img src="${esc(s.src)}" alt="${esc(s.caption || "")}" loading="lazy"></button></figure>`).join("")}</div>` : ""}

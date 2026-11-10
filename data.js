@@ -290,4 +290,35 @@ const PROJECTS = [
       }
     ]
   },
+  {
+    id: "hello-bank",
+    title: "Hello bank!",
+    year: "2025",                          // non affiché sur le site
+    role: "Design digital",
+    tags: ["Landing page", "Vidéo"],
+    cover: "images/hello-bank/cover.jpg",   // image de la grille d’accueil
+    hero: "",
+    summary: "Landing page et vidéo de l’offre de bienvenue Hello bank!, créées chez Showroomprivé.",
+    description: [
+      "Offre de bienvenue Hello bank!, réalisée pendant mon alternance chez Showroomprivé : jusqu’à 180 € d’avantages offerts et 12 premiers mois offerts sur l’offre Hello Prime. J’ai conçu la landing page version ordinateur, avec un sélecteur pour comparer les offres Hello One et Hello Prime, puis la vidéo d’animation de l’en-tête, pensée pour la landing page et diffusée avant que les visiteurs n’atterrissent dessus."
+    ],
+    images: [],
+    sections: [
+      {
+        id: "video",
+        title: "Voir la vidéo",
+        heading: "Vidéo",
+        text: "Vidéo réalisée pour la landing page : elle s’affiche avant que les visiteurs n’atterrissent dessus.",
+        image: "images/hello-bank/tuile-video.jpg",
+        video: { src: "images/hello-bank/video.mp4", poster: "images/hello-bank/poster.jpg" }
+      },
+      {
+        id: "lp",
+        title: "Voir la landing page",
+        heading: "Landing page",
+        image: "images/hello-bank/tuile-lp.jpg",
+        shots: { desk: "images/hello-bank/lp-desk.jpg" }
+      }
+    ]
+  },
 ];
