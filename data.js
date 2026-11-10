@@ -21,20 +21,20 @@ const PROJECTS = [
     year: "",                             // ajoute l’année si tu veux
     role: "Direction artistique",
     tags: ["Packaging", "Campagne"],
-    cover: "mitski-vinyle.jpg",    // image de la grille d’accueil
-    hero: "mitski-logo.jpg",       // grande image en haut de la page du projet
+    cover: "images/echoes-of-love-mitski/vinyle.jpg",    // image de la grille d’accueil
+    hero: "images/echoes-of-love-mitski/logo.jpg",       // grande image en haut de la page du projet
     summary: "Une nouvelle identité visuelle pour la campagne de promotion d’un album.",
     description: [
       "L’objectif principal de ce projet était de sélectionner une artiste dont la direction artistique n’avait pas encore pleinement évolué, et de concevoir une nouvelle identité visuelle pour une campagne de promotion majeure de son album. Ce projet a permis de repenser l’image de l’artiste, en créant une esthétique moderne et cohérente pour captiver un public plus large.",
       "L’identité se décline sur l’édition CD et son livret, un vinyle en édition limitée, la pochette pour Spotify, et des affiches pour le métro et en affichage grand format."
     ],
     images: [
-      { src: "mitski-cd.jpg", ratio: 1.475, caption: "Album, édition CD" },
-      { src: "mitski-livret.jpg", ratio: 1.476, caption: "Livret du CD" },
-      { src: "mitski-vinyle.jpg", ratio: 1.504, caption: "Vinyle, édition limitée" },
-      { src: "mitski-spotify.jpg", ratio: 1.859, caption: "Pochette de l’album sur Spotify" },
-      { src: "mitski-metro.jpg", ratio: 1.538, caption: "Affiche dans le métro" },
-      { src: "mitski-billboard.jpg", ratio: 1.583, caption: "Affiche en grand format" }
+      { src: "images/echoes-of-love-mitski/cd.jpg", ratio: 1.475, caption: "Album, édition CD" },
+      { src: "images/echoes-of-love-mitski/livret.jpg", ratio: 1.476, caption: "Livret du CD" },
+      { src: "images/echoes-of-love-mitski/vinyle.jpg", ratio: 1.504, caption: "Vinyle, édition limitée" },
+      { src: "images/echoes-of-love-mitski/spotify.jpg", ratio: 1.859, caption: "Pochette de l’album sur Spotify" },
+      { src: "images/echoes-of-love-mitski/metro.jpg", ratio: 1.538, caption: "Affiche dans le métro" },
+      { src: "images/echoes-of-love-mitski/billboard.jpg", ratio: 1.583, caption: "Affiche en grand format" }
     ],
     figma: "",
     link: ""

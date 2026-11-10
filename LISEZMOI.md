@@ -9,7 +9,7 @@
 ## Modifier le contenu
 - `data.js` : ton nom, ton email, tes liens et tous tes projets.
 - `about.html` : ton texte de présentation et ton parcours.
-- Les images sont à côté de `index.html`, sans dossier. Nomme-les avec le nom du projet devant (`mitski-cd.jpg`, `courses-ecran1.jpg`).
+- Les images sont rangées par projet : `images/nom-du-projet/image.jpg`.
 
 ## Ajouter un projet
 1. Ouvre `data.js` sur GitHub et clique sur le crayon.
