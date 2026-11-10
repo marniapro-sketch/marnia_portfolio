@@ -7,7 +7,7 @@
   --mute:#5f6d65;     /* texte secondaire */
   --accent:#2f6b45;   /* vert de ton CV */
   --font:"Outfit",system-ui,sans-serif;
-  --gap:16px;         /* espace entre les images, identique partout */
+  --gap:8px;          /* espace entre les images, identique partout */
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--bg)}
@@ -110,7 +110,7 @@ nav a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}
 
 @media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:760px){
-  :root{--gap:10px}
+  :root{--gap:6px}
   .cols,.cols3{grid-template-columns:1fr}
   .row{flex-direction:column}
   .shot{flex:none!important}
